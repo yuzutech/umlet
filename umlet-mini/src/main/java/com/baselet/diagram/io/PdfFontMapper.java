@@ -3,7 +3,6 @@ package com.baselet.diagram.io;
 import java.awt.Font;
 
 import com.baselet.control.config.Config;
-import com.baselet.diagram.Notifier;
 import com.itextpdf.awt.DefaultFontMapper;
 import com.itextpdf.text.pdf.BaseFont;
 
@@ -35,7 +34,6 @@ class PdfFontMapper extends DefaultFontMapper {
 		try {
 			return BaseFont.createFont(fontName, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 		} catch (Exception e) {
-			Notifier.getInstance().showError("Font for PDF invalid (using default instead): " + fontName);
 			return super.awtToPdf(font); // Fall back to the default mapper
 		}
 	}

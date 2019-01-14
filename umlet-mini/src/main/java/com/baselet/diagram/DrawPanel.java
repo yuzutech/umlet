@@ -13,8 +13,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.swing.JComponent;
 import javax.swing.JLayeredPane;
@@ -30,13 +28,9 @@ import com.baselet.control.basics.geom.Rectangle;
 import com.baselet.control.config.Config;
 import com.baselet.control.config.SharedConfig;
 import com.baselet.control.constants.Constants;
-import com.baselet.control.enums.Program;
-import com.baselet.control.enums.RuntimeType;
 import com.baselet.control.util.Utils;
 import com.baselet.element.interfaces.GridElement;
 import com.baselet.element.old.element.Relation;
-import com.baselet.gui.filedrop.FileDrop;
-import com.baselet.gui.filedrop.FileDropListener;
 import com.baselet.gui.listener.ScrollbarListener;
 
 @SuppressWarnings("serial")
@@ -79,28 +73,6 @@ public class DrawPanel extends JLayeredPane implements Printable {
 
 		p.setBorder(null);
 		setScrollPanel(p);
-
-		if (Program.getInstance().getRuntimeType() != RuntimeType.BATCH) {
-			// Wait until drawpanel is valid (eg: after loading a diagramm) and then update panel and scrollbars
-			// Otherwise palettes which are larger than the viewable area would sometimes not have visible scrollbars until the first click into the palette
-			new Timer("updatePanelAndScrollbars", true).schedule(new TimerTask() {
-				@Override
-				public void run() {
-					if (isValid()) {
-						updatePanelAndScrollbars();
-						cancel();
-					}
-				}
-			}, 25, 25);
-
-			if (initStartupTextAndFiledrop) {
-				StartUpHelpText startupHelpText = new StartUpHelpText(this);
-				add(startupHelpText);
-				@SuppressWarnings("unused")
-				FileDrop fd = new FileDrop(startupHelpText, new FileDropListener()); // only init if this is not a BATCH call. Also fixes Issue 81
-			}
-		}
-
 		this.repaint(); // repaint the drawpanel to be sure everything is visible (startuphelp etc)
 	}
 
@@ -195,8 +167,8 @@ public class DrawPanel extends JLayeredPane implements Printable {
 	}
 
 	public List<com.baselet.element.relation.Relation> getStickables(Collection<GridElement> excludeList) {
-		if (!SharedConfig.getInstance().isStickingEnabled() || handler instanceof PaletteHandler) {
-			return Collections.<com.baselet.element.relation.Relation> emptyList();
+		if (!SharedConfig.getInstance().isStickingEnabled()) {
+			return Collections.emptyList();
 		}
 		List<com.baselet.element.relation.Relation> returnList = getHelper(com.baselet.element.relation.Relation.class);
 		returnList.removeAll(excludeList);
@@ -570,18 +542,4 @@ public class DrawPanel extends JLayeredPane implements Printable {
 		int increment = scrollBar.getUnitIncrement();
 		scrollBar.setValue(scrollBar.getValue() + amount * increment);
 	}
-
-	private DiagramNotification notification;
-
-	public void setNotification(DiagramNotification newNotification) {
-		if (notification != null) {
-			remove(notification);
-		}
-
-		notification = newNotification;
-		add(notification);
-
-		repaint();
-	}
-
 }

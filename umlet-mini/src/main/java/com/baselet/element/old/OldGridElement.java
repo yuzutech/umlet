@@ -21,7 +21,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.baselet.control.HandlerElementMap;
-import com.baselet.control.Main;
 import com.baselet.control.SharedUtils;
 import com.baselet.control.basics.Converter;
 import com.baselet.control.basics.geom.Dimension;
@@ -67,7 +66,6 @@ public abstract class OldGridElement extends JComponent implements GridElement, 
 	public static final float ALPHA_FULL_TRANSPARENCY = 0.0f;
 
 	private boolean enabled;
-	private boolean autoresizeandmanualresizeenabled;
 	private List<String> panelAttributes = new ArrayList<String>();
 
 	// deselectedColor and fgColor must be stored separately because selection changes the actual fgColor but not the fgColorBase
@@ -91,26 +89,20 @@ public abstract class OldGridElement extends JComponent implements GridElement, 
 		this.setSize(100, 100);
 		setVisible(true);
 		enabled = true;
-		autoresizeandmanualresizeenabled = false;
 	}
 
 	@Override
 	public void setEnabled(boolean en) {
 		super.setEnabled(en);
 		if (!en && enabled) {
-			removeMouseListener(getDiagramHandler().getEntityListener(this));
-			removeMouseMotionListener(getDiagramHandler().getEntityListener(this));
 			enabled = false;
 		}
 		else if (en && !enabled) {
-			addMouseListener(getDiagramHandler().getEntityListener(this));
-			addMouseMotionListener(getDiagramHandler().getEntityListener(this));
 			enabled = true;
 		}
 	}
 
 	public boolean isManualResized() {
-		autoresizeandmanualresizeenabled = true;
 		return isManResized();
 	}
 
@@ -122,21 +114,6 @@ public abstract class OldGridElement extends JComponent implements GridElement, 
 			}
 		}
 		return false;
-	}
-
-	protected boolean isAutoResizeandManualResizeEnabled() {
-		return autoresizeandmanualresizeenabled;
-	}
-
-	public void setManualResized() {
-		if (autoresizeandmanualresizeenabled) {
-			if (!isManResized()) {
-				setPanelAttributes(getPanelAttributes() + Constants.NEWLINE + "autoresize=false");
-				if (equals(Main.getInstance().getEditedGridElement())) {
-					Main.getInstance().setPropertyPanelToGridElement(this);
-				}
-			}
-		}
 	}
 
 	// Some GridElements need additionalAttributes to be displayed correctly (eg: Relations need exact positions for edges)
