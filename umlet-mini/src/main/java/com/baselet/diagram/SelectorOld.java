@@ -5,12 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
-import com.baselet.control.Main;
 import com.baselet.control.basics.geom.Rectangle;
 import com.baselet.element.Selector;
 import com.baselet.element.interfaces.GridElement;
-import com.baselet.element.old.custom.CustomElement;
-import com.baselet.gui.CurrentGui;
 
 public class SelectorOld extends Selector {
 
@@ -71,12 +68,6 @@ public class SelectorOld extends Selector {
 		updateSelectorInformation();
 	}
 
-	private void updateGUIInformation() {
-		CurrentGui.getInstance().getGui().elementsSelected(selectedElements);
-		boolean customElementSelected = selectedElements.size() == 1 && selectedElements.get(0) instanceof CustomElement;
-		CurrentGui.getInstance().getGui().setCustomElementSelected(customElementSelected);
-	}
-
 	public void updateSelectorInformation() {
 		GridElement elementForPropPanel = null;
 		if (!selectedElements.isEmpty()) {
@@ -89,10 +80,6 @@ public class SelectorOld extends Selector {
 	public void updateSelectorInformation(GridElement elementForPropPanel) {
 		// every time something is selected - update the current diagram to this element
 		CurrentDiagram.getInstance().setCurrentDiagramHandler(panel.getHandler());
-		if (CurrentGui.getInstance().getGui() != null) {
-			updateGUIInformation();
-			Main.getInstance().setPropertyPanelToGridElement(elementForPropPanel);
-		}
 	}
 
 	public void multiSelect(Rectangle rect) {

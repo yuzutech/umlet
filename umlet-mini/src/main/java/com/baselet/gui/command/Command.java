@@ -17,20 +17,4 @@ public abstract class Command {
 			}
 		}
 	}
-
-	public boolean isMergeableTo(@SuppressWarnings("unused") Command c) {
-		return false;
-	}
-
-	public Command mergeTo(@SuppressWarnings("unused") Command c) {
-		return null;
-	}
-
-	public void redo(DiagramHandler handler) {
-		execute(handler);
-	}
-
-	public boolean isChangingDiagram() {
-		return true;
-	}
 }

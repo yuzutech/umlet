@@ -33,10 +33,6 @@ public class FontHandler {
 		}
 	}
 
-	public void resetDiagramDefaultFontFamily() {
-		diagramDefaultFontFamily = null;
-	}
-
 	private String getDiagramDefaultFontFamily() {
 		String returnFontFamily;
 		if (diagramDefaultFontFamily != null) {
@@ -55,10 +51,6 @@ public class FontHandler {
 
 	public void resetFontSize() {
 		fontSize = null;
-	}
-
-	public void resetDiagramDefaultFontSize() {
-		diagramDefaultSize = null;
 	}
 
 	public double getFontSize() {
@@ -99,10 +91,6 @@ public class FontHandler {
 
 	public double getDistanceBetweenTexts(boolean applyZoom) {
 		return getFontSize(applyZoom) / 4;
-	}
-
-	public DimensionDouble getTextSize(String stringWithFormatLabels) {
-		return getTextSize(stringWithFormatLabels, true);
 	}
 
 	public DimensionDouble getTextSize(String stringWithFormatLabels, boolean applyZoom) {

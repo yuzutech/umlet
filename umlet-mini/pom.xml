@@ -29,11 +29,6 @@
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.fifesoft</groupId>
-			<artifactId>autocomplete</artifactId>
-			<version>2.6.1</version>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.xmlgraphics</groupId>
 			<artifactId>batik-dom</artifactId>
 			<version>${batik.version}</version>
@@ -73,46 +68,9 @@
 			<version>5.5.13</version>
 		</dependency>
 		<dependency>
-			<groupId>com.github.javaparser</groupId>
-			<artifactId>javaparser-core</artifactId>
-			<version>2.3.0</version>
-		</dependency>
-		<dependency>
 			<groupId>org.sourceforge.jlibeps</groupId>
 			<artifactId>jlibeps</artifactId>
 			<version>0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.mail</groupId>
-			<artifactId>javax.mail</artifactId>
-			<version>1.5.6</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>activation</artifactId>
-					<groupId>javax.activation</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.fifesoft</groupId>
-			<artifactId>rsyntaxtextarea</artifactId>
-			<version>2.6.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.jdt</groupId>
-			<artifactId>ecj</artifactId>
-			<version>3.18.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.bcel</groupId>
-			<artifactId>bcel</artifactId>
-			<version>5.2</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>jakarta-regexp</artifactId>
-					<groupId>jakarta-regexp</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 		    <groupId>org.mozilla</groupId>

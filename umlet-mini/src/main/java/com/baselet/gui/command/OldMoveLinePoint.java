@@ -46,26 +46,4 @@ public class OldMoveLinePoint extends Command {
 		super.undo(handler);
 		_relation.moveLinePoint(_linePointId, -getDiffX(), -getDiffY());
 	}
-
-	@Override
-	public boolean isMergeableTo(Command c) {
-		if (!(c instanceof OldMoveLinePoint)) {
-			return false;
-		}
-		OldMoveLinePoint mlp = (OldMoveLinePoint) c;
-		if (getRelation() != mlp.getRelation()) {
-			return false;
-		}
-		if (getLinePointId() != mlp.getLinePointId()) {
-			return false;
-		}
-		return true;
-	}
-
-	@Override
-	public Command mergeTo(Command c) {
-		OldMoveLinePoint tmp = (OldMoveLinePoint) c;
-		OldMoveLinePoint ret = new OldMoveLinePoint(getRelation(), getLinePointId(), getDiffX() + tmp.getDiffX(), getDiffY() + tmp.getDiffY());
-		return ret;
-	}
 }

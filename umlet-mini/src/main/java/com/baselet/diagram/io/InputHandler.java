@@ -16,10 +16,7 @@ import com.baselet.element.ElementFactorySwing;
 import com.baselet.element.NewGridElement;
 import com.baselet.element.facet.common.GroupFacet;
 import com.baselet.element.interfaces.GridElement;
-import com.baselet.element.old.custom.CustomElementCompiler;
 import com.baselet.element.old.element.ErrorOccurred;
-import com.baselet.gui.BaseGUI;
-import com.baselet.gui.CurrentGui;
 import com.baselet.gui.command.HelpPanelChanged;
 
 /**
@@ -82,10 +79,6 @@ public class InputHandler extends DefaultHandler {
 			handler.setHelpText(elementtext);
 			handler.getFontHandler().setDiagramDefaultFontSize(HelpPanelChanged.getFontsize(elementtext));
 			handler.getFontHandler().setDiagramDefaultFontFamily(HelpPanelChanged.getFontfamily(elementtext));
-			BaseGUI gui = CurrentGui.getInstance().getGui();
-			if (gui != null && gui.getPropertyPane() != null) { // issue 244: in batchmode, a file can have a help_text but gui will be null
-				gui.getPropertyPane().switchToNonElement(elementtext);
-			}
 		}
 		else if (elementname.equals("zoom_level")) {
 			if (handler != null) {
@@ -112,9 +105,6 @@ public class InputHandler extends DefaultHandler {
 				try {
 					if (code == null) {
 						e = InputHandler.getOldGridElementFromPath(entityname);
-					}
-					else {
-						e = CustomElementCompiler.getInstance().genEntity(code);
 					}
 				} catch (InstantiationException e1) {
 					e = new ErrorOccurred();

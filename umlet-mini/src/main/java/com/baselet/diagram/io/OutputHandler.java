@@ -59,7 +59,7 @@ public class OutputHandler {
 	public static void createToStream(String extension, OutputStream ostream, DiagramHandler handler) throws Exception {
 
 		int oldZoom = handler.getGridSize();
-		handler.setGridAndZoom(Constants.DEFAULTGRIDSIZE, false); // Zoom to the defaultGridsize before execution
+		handler.setGridAndZoom(Constants.DEFAULTGRIDSIZE); // Zoom to the defaultGridsize before execution
 
 		// if some GridElements are selected, only export them
 		Collection<GridElement> elementsToDraw = handler.getDrawPanel().getSelector().getSelectedElements();
@@ -70,7 +70,7 @@ public class OutputHandler {
 
 		OutputHandler.exportToOutputStream(extension, ostream, elementsToDraw, handler.getFontHandler());
 
-		handler.setGridAndZoom(oldZoom, false); // Zoom back to the oldGridsize after execution
+		handler.setGridAndZoom(oldZoom); // Zoom back to the oldGridsize after execution
 	}
 
 	private static void exportToOutputStream(String extension, OutputStream ostream, Collection<GridElement> entities, FontHandler diagramFont) throws IOException {

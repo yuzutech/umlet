@@ -124,25 +124,6 @@ public class OldResize extends Command {
 		CurrentDiagram.getInstance().getDiagramHandler().getDrawPanel().updatePanelAndScrollbars();
 	}
 
-	@Override
-	public boolean isMergeableTo(Command c) {
-		if (!(c instanceof OldResize)) {
-			return false;
-		}
-		OldResize r = (OldResize) c;
-		if (id == r.id) {
-			return true;
-		}
-		return false;
-	}
-
-	@Override
-	public Command mergeTo(Command c) {
-		OldResize tmp = (OldResize) c;
-		return new OldResize(entity, Math.max(id, tmp.id), getDiffx() + tmp.getDiffx(), getDiffy() + tmp.getDiffy(),
-				getDiffw() + tmp.getDiffw(), getDiffh() + tmp.getDiffh(), move_commands, tmp.move_commands);
-	}
-
 	public static Vector<OldRelationLinePoint> getStickingRelationLinePoints(DiagramHandler handler, StickingPolygon stickingPolygon) {
 		Vector<OldRelationLinePoint> lpts = new Vector<OldRelationLinePoint>();
 		Collection<Relation> rels = handler.getDrawPanel().getOldRelations();
