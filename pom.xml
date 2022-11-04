@@ -31,9 +31,9 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
-		<animal.sniffer.java.api>java16</animal.sniffer.java.api>
+		<maven.compiler.source>7</maven.compiler.source>
+		<maven.compiler.target>7</maven.compiler.target>
+		<animal.sniffer.java.api>java7</animal.sniffer.java.api>
 	</properties>
 
 	<modules>
