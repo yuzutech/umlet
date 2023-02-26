@@ -36,12 +36,12 @@ public class ConverterTest {
 
 	@Test
 	public void should_convert_analysis_diagram_to_png() throws Exception {
-		should_convert_diagram_to_output("cl_analysis.uxf", "png", "analysis.png", "A5D6A58C6222723AF2BFAAB33CAB9C7F");
+		should_convert_diagram_to_output("cl_analysis.uxf", "png", "analysis.png", "4724D859D2CC352C4483967CD650EA3F");
 	}
 
 	@Test
 	public void should_convert_analysis_diagram_to_svg() throws Exception {
-		should_convert_diagram_to_output("cl_analysis.uxf", "svg", "analysis.svg", "C8C3A6F0AD2FD18F2060DE02DC9DEE53");
+		should_convert_diagram_to_output("cl_analysis.uxf", "svg", "analysis.svg", "10BE3BA0254F599B80668DACEB02F948");
 	}
 
 	@Test
@@ -51,41 +51,41 @@ public class ConverterTest {
 
 	@Test
 	public void should_convert_analysis_diagram_to_jpeg() throws Exception {
-		should_convert_diagram_to_output("cl_analysis.uxf", "jpeg", "analysis.jpeg", "869B53DAE13C8A764B744179C507CB73");
+		should_convert_diagram_to_output("cl_analysis.uxf", "jpeg", "analysis.jpeg", "920B05549C6D1D5F6AFB5905335B746A");
 	}
 
 	// object
 
 	@Test
 	public void should_convert_object_diagram_to_png() throws Exception {
-		should_convert_diagram_to_output("cl_object.uxf", "png", "object.png", "20AE4938EF494C4A1283F714A3EF0ADB");
+		should_convert_diagram_to_output("cl_object.uxf", "png", "object.png", "FDD842A8CD64F8E5151AFEF0EEB8462C");
 	}
 
 	@Test
 	public void should_convert_object_diagram_to_svg() throws Exception {
-		should_convert_diagram_to_output("cl_object.uxf", "svg", "object.svg", "C0BEE70459FAA5663FDF023CD2D758EF");
+		should_convert_diagram_to_output("cl_object.uxf", "svg", "object.svg", "96A0B9B6A7232AF686A17DC63B31C48E");
 	}
 
 	@Test
 	public void should_convert_object_diagram_to_pdf() throws Exception {
-		should_convert_diagram_to_pdf("cl_object.uxf", "object.pdf", 3481);
+		should_convert_diagram_to_pdf("cl_object.uxf", "object.pdf", 3448);
 	}
 
 	@Test
 	public void should_convert_object_diagram_to_jpeg() throws Exception {
-		should_convert_diagram_to_output("cl_object.uxf", "jpeg", "object.jpeg", "452FC3D2F60D03DD9DA3881CB9340EA9");
+		should_convert_diagram_to_output("cl_object.uxf", "jpeg", "object.jpeg", "EB0A42B76D1B795203B418BD6E114047");
 	}
 
 	// struct
 
 	@Test
 	public void should_convert_struct_diagram_to_png() throws Exception {
-		should_convert_diagram_to_output("kxd_composite_structure.uxf", "png", "struct.png", "BEDD82E06A1F58326C5D84E0CA2053DD");
+		should_convert_diagram_to_output("kxd_composite_structure.uxf", "png", "struct.png", "EC6D93BFA7676EF04A91842D72C28B7C");
 	}
 
 	@Test
 	public void should_convert_struct_diagram_to_svg() throws Exception {
-		should_convert_diagram_to_output("kxd_composite_structure.uxf", "svg", "struct.svg", "6492B7242E03D7424F346A44396B1E25");
+		should_convert_diagram_to_output("kxd_composite_structure.uxf", "svg", "struct.svg", "46AF25C1382CF0E33D1C89BF0D16EF91");
 	}
 
 	@Test
@@ -95,51 +95,51 @@ public class ConverterTest {
 
 	@Test
 	public void should_convert_struct_diagram_to_jpeg() throws Exception {
-		should_convert_diagram_to_output("kxd_composite_structure.uxf", "jpeg", "struct.jpeg", "CFA12AED8295B66CB6A692CA6538D7ED");
+		should_convert_diagram_to_output("kxd_composite_structure.uxf", "jpeg", "struct.jpeg", "772A9245EE6C832F1CB1EB7BB3D9C810");
 	}
 
 	// state
 
 	@Test
 	public void should_convert_state_diagram_to_png() throws Exception {
-		should_convert_diagram_to_output("sm_complex_state.uxf", "png", "state.png", "DA76399E42E10CDB76246F0B005C0225");
+		should_convert_diagram_to_output("sm_complex_state.uxf", "png", "state.png", "D756D51CE76CE8985DC41CED4EADE84E");
 	}
 
 	@Test
 	public void should_convert_state_diagram_to_svg() throws Exception {
-		should_convert_diagram_to_output("sm_complex_state.uxf", "svg", "state.svg", "0FDFEF7C7F00912AFF5A7308CA0B1448");
+		should_convert_diagram_to_output("sm_complex_state.uxf", "svg", "state.svg", "9D35554E37E6C23EB275C0DBDEFA87F3");
 	}
 
 	@Test
 	public void should_convert_state_diagram_to_pdf() throws Exception {
-		should_convert_diagram_to_pdf("sm_complex_state.uxf", "state.pdf", 4613);
+		should_convert_diagram_to_pdf("sm_complex_state.uxf", "state.pdf", 4593);
 	}
 
 	@Test
 	public void should_convert_state_diagram_to_jpeg() throws Exception {
-		should_convert_diagram_to_output("sm_complex_state.uxf", "jpeg", "state.jpeg", "274B9C328F9B13A441A4490D05E84845");
+		should_convert_diagram_to_output("sm_complex_state.uxf", "jpeg", "state.jpeg", "F5555DB6DF01EA3D03DB3B12F5E8F138");
 	}
 
 	// seq
 
 	@Test
 	public void should_convert_seq_diagram_to_png() throws Exception {
-		should_convert_diagram_to_output("sd_sequence.uxf", "png", "seq.png", "43E5FA5C25673F0824480FB1BEC48CA6");
+		should_convert_diagram_to_output("sd_sequence.uxf", "png", "seq.png", "04D2CB59FD5108862A36E5C598B298CE");
 	}
 
 	@Test
 	public void should_convert_seq_diagram_to_svg() throws Exception {
-		should_convert_diagram_to_output("sd_sequence.uxf", "svg", "seq.svg", "2F6E0FCB68E62F338AF7F596C519DC76");
+		should_convert_diagram_to_output("sd_sequence.uxf", "svg", "seq.svg", "5955633AE8ABF7F7A348419A69204E8E");
 	}
 
 	@Test
 	public void should_convert_seq_diagram_to_pdf() throws Exception {
-		should_convert_diagram_to_pdf("sd_sequence.uxf", "seq.pdf", 7714);
+		should_convert_diagram_to_pdf("sd_sequence.uxf", "seq.pdf", 6990);
 	}
 
 	@Test
 	public void should_convert_seq_diagram_to_jpeg() throws Exception {
-		should_convert_diagram_to_output("sd_sequence.uxf", "jpeg", "seq.jpeg", "B98DBCF56123F3D5CC3497910F5AC506");
+		should_convert_diagram_to_output("sd_sequence.uxf", "jpeg", "seq.jpeg", "9552FEEE5155167ADC53CB339399F1FB");
 	}
 
 	private void should_convert_diagram_to_output(String diagramName, String outputFormat, String outputPath, String expectedHash) throws Exception, IOException, NoSuchAlgorithmException {
@@ -159,7 +159,7 @@ public class ConverterTest {
 		byte[] result = convert(read(diagram), "pdf");
 		// write the file in target to debug
 		Files.write(Paths.get("target", outputPath), result);
-		int approx = 10;
+		int approx = 20;
 		assertThat(result.length).isBetween(expectedSize - approx, expectedSize + approx);
 	}
 

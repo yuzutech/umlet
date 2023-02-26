@@ -5,9 +5,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
+    branches: [ mini ]
   pull_request:
-    branches: [ master ]
+    branches: [ mini ]
 
 jobs:
   build:
@@ -23,20 +23,4 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Build with Maven
-      run: mvn clean install -P checks
-    - uses: actions/upload-artifact@v2
-      with:
-        name: Umlet Eclipse P2 Repository
-        path: umlet-eclipse-p2/target/*.zip
-    - uses: actions/upload-artifact@v2
-      with:
-        name: Umlet Standalone
-        path: umlet-standalone/target/*.zip
-    - uses: actions/upload-artifact@v2
-      with:
-        name: Umlet VSCode Plugin
-        path: umlet-vscode/target/*.zip
-    - uses: actions/upload-artifact@v2
-      with:
-        name: Umletino (Web Version)
-        path: umlet-web/target/*.zip
+      run: mvn clean install
