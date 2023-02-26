@@ -7,7 +7,7 @@
 		<version>15.0.0</version>
 	</parent>
 
-	<artifactId>umlet-swing</artifactId>
+	<artifactId>umlet-mini</artifactId>
 
 	<properties>
 		<batik.version>1.8</batik.version>
