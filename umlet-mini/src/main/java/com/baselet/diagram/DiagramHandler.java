@@ -198,4 +198,8 @@ public class DiagramHandler {
 		}
 		element.updateModelFromText(); // must be updated here because the new handler could have a different zoom level
 	}
+
+	public void close() {
+		HandlerElementMap.clear();
+	}
 }

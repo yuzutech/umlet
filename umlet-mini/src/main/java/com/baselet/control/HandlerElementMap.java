@@ -21,4 +21,7 @@ public class HandlerElementMap {
 		return gridElementToHandlerMapping.put(element, handler);
 	}
 
+	public static void clear() {
+		gridElementToHandlerMapping.clear();
+	}
 }
