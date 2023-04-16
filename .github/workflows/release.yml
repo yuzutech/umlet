@@ -1,17 +1,23 @@
-name: Native Image
+name: Native Images On-Demand
 
 on:
-  push:
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v2.1.3
-
-defaults:
-  run:
-    shell: bash
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: true
 
 jobs:
-  workflow_config:
-    runs-on: ubuntu-latest
+  native_images:
+    name: 'Build Native Image ${{ matrix.platform }}'
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, ARM64 ]
+        include:
+          - os: 'ubuntu-latest'
+            platform: 'linux-amd64'
+          - os: 'ARM64'
+            platform: 'linux-arm64'
+    runs-on: ${{matrix.os}}
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 11
@@ -20,16 +26,23 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
           cache: maven
+      - uses: graalvm/setup-graalvm@v1
+        with:
+          version: '22.3.1'
+          java-version: '11'
+          components: 'native-image'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Build with Maven
         run: mvn clean package
       - name: Generate native image
         run: |
-          docker build -t umlet-native -f ./umlet-cli/Dockerfile ./umlet-cli 
-          docker create --name umlet-native-binary umlet-native
-          docker cp umlet-native-binary:./umlet umlet
-      - run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+          mkdir -p native-image-config-dir
+          cat fixtures/state.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-output-dir=native-image-config-dir-dir=./native-image-config-dir -jar ./target/umlet.jar svg
+          native-image -H:ConfigurationFileDirectories=native-image-config-dir --no-fallback --report-unsupported-elements-at-runtime -jar ./target/umlet.jar -H:Name="umlet-${{matrix.platform}}"
+        working-directory: ./umlet-cli
       - name: Create release
         run: |
-          gh release create $RELEASE_VERSION './umlet#UMlet native image (Linux amd64)'
+          gh release upload $RELEASE_VERSION './umlet-cli/umlet-${{matrix.platform}}#UMlet native image (${{matrix.platform}})'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_VERSION: ${{ github.event.inputs.tag }}
