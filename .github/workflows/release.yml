@@ -37,7 +37,7 @@ jobs:
       - name: Generate native image
         run: |
           mkdir -p native-image-config-dir
-          cat fixtures/state.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-output-dir=native-image-config-dir-dir=./native-image-config-dir -jar ./target/umlet.jar svg
+          cat fixtures/state.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-output-dir=native-image-config-dir -jar ./target/umlet.jar svg
           native-image -H:ConfigurationFileDirectories=native-image-config-dir --no-fallback --report-unsupported-elements-at-runtime -jar ./target/umlet.jar -H:Name="umlet-${{matrix.platform}}"
         working-directory: ./umlet-cli
       - name: Create release
