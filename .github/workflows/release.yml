@@ -6,6 +6,8 @@ on:
       tag:
         required: true
 
+run-name: Native Images ${{ inputs.tag }} by @${{ github.actor }}
+
 jobs:
   native_images:
     name: 'Build Native Image ${{ matrix.platform }}'
