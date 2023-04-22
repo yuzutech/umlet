@@ -44,7 +44,7 @@ jobs:
         working-directory: ./umlet-cli
       - name: Create release
         run: |
-          gh release upload $RELEASE_VERSION './umlet-cli/umlet-${{matrix.platform}}#UMlet native image (${{matrix.platform}})'
+          gh release upload $RELEASE_VERSION './umlet-cli/umlet-${{matrix.platform}}#UMlet native image (${{matrix.platform}})' --clobber
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           RELEASE_VERSION: ${{ github.event.inputs.tag }}
