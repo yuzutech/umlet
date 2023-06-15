@@ -4,6 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
+        description: tag
         required: true
 
 run-name: Native Images ${{ inputs.tag }} by @${{ github.actor }}

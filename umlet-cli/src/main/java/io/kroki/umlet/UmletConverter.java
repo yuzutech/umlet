@@ -6,6 +6,7 @@ import com.baselet.control.enums.RuntimeType;
 import com.baselet.control.util.Utils;
 import com.baselet.diagram.DiagramHandler;
 import com.baselet.diagram.io.OutputHandler;
+import org.xml.sax.SAXParseException;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -22,11 +23,20 @@ public class UmletConverter {
   }
 
   public static byte[] convert(String source, String outputFormat) throws Exception {
-    DiagramHandler handler = DiagramHandler.forExport(source);
-    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    OutputHandler.createToStream(outputFormat, baos, handler);
-    byte[] result = baos.toByteArray();
-    handler.close();
-    return result;
+    try {
+      DiagramHandler handler = DiagramHandler.forExport(source);
+      ByteArrayOutputStream baos = new ByteArrayOutputStream();
+      OutputHandler.createToStream(outputFormat, baos, handler);
+      byte[] result = baos.toByteArray();
+      handler.close();
+      return result;
+    } catch (Exception e) {
+      if (e instanceof RuntimeException && e.getCause() instanceof SAXParseException) {
+        // gives a better error message when handling invalid XML
+        // https://github.com/yuzutech/kroki/issues/1556
+        throw new IllegalArgumentException(e.getCause().getMessage());
+      }
+      throw e;
+    }
   }
 }
