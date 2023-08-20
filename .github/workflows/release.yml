@@ -31,7 +31,7 @@ jobs:
           cache: maven
       - uses: graalvm/setup-graalvm@v1
         with:
-          version: '22.3.1'
+          version: '22.3.3'
           java-version: '11'
           components: 'native-image'
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -41,9 +41,12 @@ jobs:
         run: |
           mkdir -p native-image-config-dir
           cat fixtures/state.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-output-dir=native-image-config-dir -jar ./target/umlet.jar svg
-          cat fixtures/sample.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-output-dir=native-image-config-dir -jar ./target/umlet.jar png
-          cat fixtures/sample.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-output-dir=native-image-config-dir -jar ./target/umlet.jar jpeg
-          native-image -H:ConfigurationFileDirectories=native-image-config-dir --no-fallback --report-unsupported-elements-at-runtime -jar ./target/umlet.jar -H:Name="umlet-${{matrix.platform}}"
+          cat fixtures/state.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-merge-dir=native-image-config-dir -jar ./target/umlet.jar png
+          cat fixtures/state.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-merge-dir=native-image-config-dir -jar ./target/umlet.jar jpeg
+          cat fixtures/sample.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-merge-dir=native-image-config-dir -jar ./target/umlet.jar svg
+          cat fixtures/sample.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-merge-dir=native-image-config-dir -jar ./target/umlet.jar png
+          cat fixtures/sample.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-merge-dir=native-image-config-dir -jar ./target/umlet.jar jpeg
+          native-image -Djava.awt.headless=true -H:ConfigurationFileDirectories=native-image-config-dir --no-fallback --report-unsupported-elements-at-runtime -jar ./target/umlet.jar -H:Name="umlet-${{matrix.platform}}"
         working-directory: ./umlet-cli
       - name: Create release
         run: |
