@@ -43,7 +43,7 @@ jobs:
           cat fixtures/swimlane.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-output-dir=native-image-config-dir -jar ./target/umlet.jar svg
           cat fixtures/swimlane.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-merge-dir=native-image-config-dir -jar ./target/umlet.jar png
           cat fixtures/swimlane.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-merge-dir=native-image-config-dir -jar ./target/umlet.jar jpeg
-          cat fixtures/state.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-output-dir=native-image-config-dir -jar ./target/umlet.jar svg
+          cat fixtures/state.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-merge-dir=config-output-dir=native-image-config-dir -jar ./target/umlet.jar svg
           cat fixtures/state.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-merge-dir=native-image-config-dir -jar ./target/umlet.jar png
           cat fixtures/state.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-merge-dir=native-image-config-dir -jar ./target/umlet.jar jpeg
           cat fixtures/sample.xml | java -Djava.awt.headless=true -agentlib:native-image-agent=config-merge-dir=native-image-config-dir -jar ./target/umlet.jar svg
